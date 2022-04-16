@@ -1,0 +1,2 @@
+export const TOGGLE_TODO_STATUS = 'TOGGLE_TODO_STATUS';
+export const ADD_TODO = 'ADD_TODO';
