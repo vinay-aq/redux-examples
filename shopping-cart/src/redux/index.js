@@ -1,4 +1,4 @@
 import { addProductToCart,resetCart } from "./actions/cartSectionActions";
-import { reduceProductFromInventory } from "./actions/productSectionActions";
+import { reduceProductFromInventory,fetchInventory } from "./actions/productSectionActions";
 
-export { addProductToCart, reduceProductFromInventory,resetCart };
+export { addProductToCart, reduceProductFromInventory,resetCart ,fetchInventory};

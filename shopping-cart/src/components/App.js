@@ -2,16 +2,23 @@ import "./App.css";
 import ProductSection from "./ProductSection";
 import CartSection from "./CartSection";
 import { useSelector, useDispatch } from "react-redux";
-import { addProductToCart, reduceProductFromInventory,resetCart } from "../redux";
+import { addProductToCart, reduceProductFromInventory,resetCart,fetchInventory } from "../redux";
+import {useEffect} from 'react';
 
 function App() {
 
   // let initialCartProducts = [];
   // {"id": 1, "title": "iPad 4 Mini", "price": 500, "purchasedQty": 2},
 
+  
   let availableProducts = useSelector((state) => state.productSection.availableProducts);
   let cartProducts = useSelector((state)=> state.cartSection.cartProducts)
   const dispatch = useDispatch();
+  
+  useEffect(()=> {
+    dispatch(fetchInventory());
+  },[]);
+
 
   const handleAddCart = (id) => {
     dispatch(reduceProductFromInventory(id));

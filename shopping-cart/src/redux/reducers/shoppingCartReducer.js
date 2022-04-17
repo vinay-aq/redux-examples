@@ -2,9 +2,9 @@ import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY,RESET_CART,FETCH_INVENTORY
 
 const initialState1 = {
   availableProducts:  [
-    { id: 1, title: "iPad 4 Mini", price: 500, inventory: 2 },
-    { id: 2, title: "H&M T-Shirt White", price: 10, inventory: 10 },
-    { id: 3, title: "Charli XCX - Sucker CD", price: 20, inventory: 5 },
+    // { id: 1, title: "iPad 4 Mini", price: 500, inventory: 2 },
+    // { id: 2, title: "H&M T-Shirt White", price: 10, inventory: 10 },
+    // { id: 3, title: "Charli XCX - Sucker CD", price: 20, inventory: 5 },
   ],
 
 };
