@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import { productSectionReducer,cartSectionReducer } from './reducers/shoppingCart';
+import { productSectionReducer,cartSectionReducer } from './reducers/shoppingCartReducer';
 
 const rootReducer = combineReducers({
     productSection:productSectionReducer,

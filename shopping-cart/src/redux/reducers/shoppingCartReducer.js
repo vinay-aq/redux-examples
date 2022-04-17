@@ -1,4 +1,4 @@
-import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY } from "../actions/constants";
+import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY,RESET_CART } from "../actions/constants";
 
 const initialState1 = {
   availableProducts:  [
@@ -32,13 +32,16 @@ export const cartSectionReducer = (state = initialState2, action) => {
       const checkForTheProductInCart = (id) => {
         return cartProducts.find((product) => product.id === id);
       };
-
+ 
       if (checkForTheProductInCart(action.payload.id)) {
+       
         let cartProductsCopy = cartProducts.map((prod) =>
-          prod.id === action.payload.id ? { ...prod, purchasedQty: prod.purchasedQty + 1 } : prod
+          prod.id === action.payload.id  ? { ...prod, purchasedQty: prod.purchasedQty + 1 } : prod
         );
+        
         return { ...state, cartProducts: cartProductsCopy };
       } else {
+   
         let productPurchased = {
           id: action.payload.id,
           title: action.payload.title,
@@ -48,7 +51,10 @@ export const cartSectionReducer = (state = initialState2, action) => {
         return { ...state, cartProducts: [...state.cartProducts, productPurchased] };
       }
 
+      case RESET_CART:
+          return {...state, cartProducts:[]}
+
     default:
-      return state;
+      return state; 
   }
 };
