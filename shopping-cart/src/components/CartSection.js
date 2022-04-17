@@ -9,7 +9,7 @@ function CartSection({cartProducts, checkOutCart }) {
   const showCartProducts = ()=> {
     if(cartProducts.length===0) return   <em> Please add some products to cart</em>
     else {
-      console.log('inside else section')
+   
       return cartProducts.map(prod => <div style={{marginBottom:'8px'}}>{prod.title} - {prod.price} x {prod.purchasedQty} </div> )
        
     }

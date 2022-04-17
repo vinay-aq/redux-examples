@@ -4,7 +4,7 @@ import ProductSection from "./ProductSection";
 import CartSection from "./CartSection";
 
 function App() {
-  let initiallAvailableProducts = [
+  let initialAvailableProducts = [
     { id: 1, title: "iPad 4 Mini", price: 500, inventory: 2 },
     { id: 2, title: "H&M T-Shirt White", price: 10, inventory: 10 },
     { id: 3, title: "Charli XCX - Sucker CD", price: 20, inventory: 5 },
@@ -12,7 +12,7 @@ function App() {
   let initialCartProducts = [];
   // {"id": 1, "title": "iPad 4 Mini", "price": 500, "purchasedQty": 2},
 
-  let [availableProducts, setAvailableProducts] = useState(initiallAvailableProducts);
+  let [availableProducts, setAvailableProducts] = useState(initialAvailableProducts);
   let [cartProducts, setCartProducts] = useState(initialCartProducts);
 
   const reduceFromInventory = (id) => {
