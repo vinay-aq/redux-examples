@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
-import {toggleTodoStatus,addTodo} from "../redux";
-import {useSelector,useDispatch} from 'react-redux';
+import { toggleTodoStatus, addTodo } from "../redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getByDisplayValue } from "@testing-library/react";
 
 function TodoList({ todos, onClickTodo, todosType = "All" }) {
@@ -33,9 +33,8 @@ function App() {
   let [todo, setTodo] = useState("");
 
   let [todosType, setTodosType] = useState("All");
-  const todos = useSelector(state => state.todos )
-  const dispatch =  useDispatch();
-
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   const handleClickTodo = (todoIndex) => {
     dispatch(toggleTodoStatus(todoIndex));
@@ -48,7 +47,7 @@ function App() {
         <button
           onClick={() => {
             if (todo.length > 0) {
-             dispatch(addTodo({todo,status:"Active"}));
+              dispatch(addTodo({ todo, status: "Active" }));
               setTodo("");
             }
           }}
@@ -59,9 +58,15 @@ function App() {
       <TodoList todos={todos} onClickTodo={handleClickTodo} todosType={todosType} />
       <div>
         Show:
-        <button disabled={todosType==="All"} onClick={() => setTodosType("All")}>All</button>
-        <button disabled={todosType==="Active"} onClick={() => setTodosType("Active")}>Active</button>
-        <button disabled={todosType==="Completed"} onClick={() => setTodosType("Completed")}>Completed</button>
+        <button disabled={todosType === "All"} onClick={() => setTodosType("All")}>
+          All
+        </button>
+        <button disabled={todosType === "Active"} onClick={() => setTodosType("Active")}>
+          Active
+        </button>
+        <button disabled={todosType === "Completed"} onClick={() => setTodosType("Completed")}>
+          Completed
+        </button>
       </div>
     </div>
   );
