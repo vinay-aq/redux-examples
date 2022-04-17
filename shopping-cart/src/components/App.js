@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import ProductSection from "./ProductSection";
 import CartSection from "./CartSection";
+import { useSelector, useDispatch } from "react-redux";
+import { addProductToCart, reduceProductFromInventory } from "../redux";
 
 function App() {
   let initialAvailableProducts = [
@@ -12,15 +14,10 @@ function App() {
   let initialCartProducts = [];
   // {"id": 1, "title": "iPad 4 Mini", "price": 500, "purchasedQty": 2},
 
-  let [availableProducts, setAvailableProducts] = useState(initialAvailableProducts);
-  let [cartProducts, setCartProducts] = useState(initialCartProducts);
+  let availableProducts = useSelector((state) => state.productSection.availableProducts);
 
-  const reduceFromInventory = (id) => {
-    let availableProductsCopy = availableProducts.map((product) =>
-      product.id === id ? { ...product, inventory: product.inventory - 1 } : product
-    );
-    setAvailableProducts(availableProductsCopy);
-  };
+  const dispatch = useDispatch();
+  let [cartProducts, setCartProducts] = useState(initialCartProducts);
 
   const addToTheCart = (id) => {
     let product = availableProducts.find((prod) => prod.id === id);
@@ -41,8 +38,7 @@ function App() {
   };
 
   const handleAddCart = (id) => {
-    console.log(id);
-    reduceFromInventory(id);
+    dispatch(reduceProductFromInventory(id));
     addToTheCart(id);
   };
 

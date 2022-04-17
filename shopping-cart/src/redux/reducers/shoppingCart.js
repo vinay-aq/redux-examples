@@ -1,15 +1,22 @@
 import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY } from "../actions/constants";
 
-const initialState = {
-  availableProducts: [],
-  cartProducts: [],
-};
+const initialState1 = {
+  availableProducts:  [
+    { id: 1, title: "iPad 4 Mini", price: 500, inventory: 2 },
+    { id: 2, title: "H&M T-Shirt White", price: 10, inventory: 10 },
+    { id: 3, title: "Charli XCX - Sucker CD", price: 20, inventory: 5 },
+  ],
 
-export const productSectionReducer = (state = initialState, action) => {
+};
+const initialState2 = {
+    cartProducts: [],
+}
+
+export const productSectionReducer = (state = initialState1, action) => {
   switch (action.type) {
     case REDUCE_PROD_FROM_INVENTORY:
-      let availableProductsCopy = availableProducts.map((product) =>
-        product.id === payload ? { ...product, inventory: product.inventory - 1 } : product
+      let availableProductsCopy = state.availableProducts.map((product) =>
+        product.id === action.payload ? { ...product, inventory: product.inventory - 1 } : product
       );
       return { ...state, availableProducts: availableProductsCopy };
 
@@ -18,9 +25,10 @@ export const productSectionReducer = (state = initialState, action) => {
   }
 };
 
-export const cartSectionReducer = (state = initialState, action) => {
+export const cartSectionReducer = (state = initialState2, action) => {
   switch (action.type) {
     case ADD_PROD_TO_CART:
+     let {cartProducts} = state;
       const checkForTheProductInCart = (id) => {
         return cartProducts.find((product) => product.id === id);
       };
