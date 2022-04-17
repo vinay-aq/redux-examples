@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import ProductSection from "./ProductSection";
 import CartSection from "./CartSection";
@@ -13,30 +12,11 @@ function App() {
   let availableProducts = useSelector((state) => state.productSection.availableProducts);
   let cartProducts = useSelector((state)=> state.cartSection.cartProducts)
   const dispatch = useDispatch();
-  // let [cartProducts, setCartProducts] = useState(initialCartProducts);
-
-  // const addToTheCart = (id) => {
-  //   let product = availableProducts.find((prod) => prod.id === id);
-  //   if (checkForTheProductInCart(id)) {
-  //     let products = cartProducts.map((prod) =>
-  //       prod.id === id ? { ...prod, purchasedQty: prod.purchasedQty + 1 } : prod
-  //     );
-  //     setCartProducts(products);
-  //   } else {
-  //     let productPurchased = { id: product.id, title: product.title, price: product.price, purchasedQty: 1 };
-  //     setCartProducts([...cartProducts, productPurchased]);
-  //   }
-  // };
-
-  const checkForTheProductInCart = (id) => {
-    return cartProducts.find((product) => product.id === id);
-  };
 
   const handleAddCart = (id) => {
     dispatch(reduceProductFromInventory(id));
     let product = availableProducts.find(prod => prod.id===id);
     dispatch(addProductToCart(product))
-    // addToTheCart(id);
   };
 
 
