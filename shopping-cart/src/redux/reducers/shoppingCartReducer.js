@@ -1,4 +1,4 @@
-import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY,RESET_CART } from "../actions/constants";
+import { ADD_PROD_TO_CART, REDUCE_PROD_FROM_INVENTORY,RESET_CART,FETCH_INVENTORY } from "../actions/constants";
 
 const initialState1 = {
   availableProducts:  [
@@ -19,7 +19,8 @@ export const productSectionReducer = (state = initialState1, action) => {
         product.id === action.payload ? { ...product, inventory: product.inventory - 1 } : product
       );
       return { ...state, availableProducts: availableProductsCopy };
-
+    case FETCH_INVENTORY:
+      return {...state,availableProducts:action.payload}
     default:
       return state;
   }
